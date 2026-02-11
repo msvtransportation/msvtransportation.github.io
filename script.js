@@ -108,7 +108,7 @@ if (contactForm) {
         
         // FormSubmit will handle the actual submission
         // The form will submit normally to FormSubmit's server
-    });
+    });}
 // ===========================
 // Scroll Animation Observer
 // ===========================
