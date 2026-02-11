@@ -164,14 +164,29 @@ animateElements.forEach(el => {
 const animateCounter = (element, target, duration = 2000) => {
     let start = 0;
     const increment = target / (duration / 16);
+    const hasPlus = element.textContent.includes('+');  // Check if original has +
     
     const updateCounter = () => {
         start += increment;
         if (start < target) {
-            element.textContent = Math.floor(start).toLocaleString();
+            // During animation
+            if (target >= 1000) {
+                element.textContent = Math.floor(start).toLocaleString();
+            } else {
+                element.textContent = Math.floor(start);
+            }
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target.toLocaleString();
+            // Final value - add + if it was there originally
+            if (hasPlus) {
+                if (target >= 1000) {
+                    element.textContent = target.toLocaleString() + '+';  // "20,000+"
+                } else {
+                    element.textContent = target + '+';  // "15+"
+                }
+            } else {
+                element.textContent = target.toLocaleString();  // "2017"
+            }
         }
     };
     
