@@ -451,6 +451,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+
 .team-intro {
     font-size: 1.1rem;
     color: var(--medium-gray);
@@ -993,7 +994,7 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
     }
     /*Change hamburger color */
-    
+
     .nav-toggle span {
         background: var(--primary-red);  /* Red hamburger icon */
     }
