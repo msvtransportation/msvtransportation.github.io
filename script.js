@@ -96,42 +96,19 @@ faqQuestions.forEach(question => {
 // ===========================
 // Contact Form Handling
 // ===========================
+
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        // Show loading state
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        submitBtn.textContent = 'SENDING...';
+        submitBtn.disabled = true;
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        alert('Thank you for your message! We will get back to you soon.');
-        
-        // Reset form
-        contactForm.reset();
-        
-        // In a real application, you would replace this with actual form submission:
-        // fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     alert('Thank you for your message!');
-        //     contactForm.reset();
-        // })
-        // .catch(error => {
-        //     alert('There was an error sending your message. Please try again.');
-        // });
+        // FormSubmit will handle the actual submission
+        // The form will submit normally to FormSubmit's server
     });
-}
-
 // ===========================
 // Scroll Animation Observer
 // ===========================
