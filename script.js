@@ -190,13 +190,15 @@ const statObserver = new IntersectionObserver((entries) => {
             
             if (text.includes('+')) {
                 animateCounter(statNumber, targetNumber, 2000);
-                // Add back the + after animation
+            // Add back the + after animation WITHOUT comma for numbers under 1000
                 setTimeout(() => {
-                    statNumber.textContent = targetNumber.toLocaleString() + '+';
+                    if (targetNumber >= 1000) {
+                         statNumber.textContent = targetNumber.toLocaleString() + '+';  // "20,000+"
+                    } else {
+                        statNumber.textContent = targetNumber + '+';  // "15+" (no comma)
+                  }
                 }, 2000);
-            } else {
-                statNumber.textContent = targetNumber;
-            }
+        }   
             
             statObserver.unobserve(statNumber);
         }
