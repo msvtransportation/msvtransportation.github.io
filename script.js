@@ -96,7 +96,6 @@ faqQuestions.forEach(question => {
 // ===========================
 // Contact Form Handling
 // ===========================
-
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
@@ -108,7 +107,9 @@ if (contactForm) {
         
         // FormSubmit will handle the actual submission
         // The form will submit normally to FormSubmit's server
-    });}
+    });
+}
+
 // ===========================
 // Scroll Animation Observer
 // ===========================
@@ -180,19 +181,21 @@ const statObserver = new IntersectionObserver((entries) => {
             // Extract number from text
             let targetNumber = parseInt(text.replace(/[^0-9]/g, ''));
             
-            if (text.includes('+')) {
+            // Check if it has a + sign
+            const hasPlus = text.includes('+');
+            
+            if (hasPlus) {
                 animateCounter(statNumber, targetNumber, 2000);
-            // Add back the + after animation WITHOUT comma for numbers under 1000
-        }   
+            } else {
+                // No animation for year (2017)
+                statNumber.textContent = targetNumber;
+            }
             
             statObserver.unobserve(statNumber);
         }
     });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.stat-number').forEach(stat => {
-    statObserver.observe(stat);
-});
 
 // ===========================
 // Parallax Effect for Hero
