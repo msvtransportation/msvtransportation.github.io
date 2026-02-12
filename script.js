@@ -99,16 +99,42 @@ faqQuestions.forEach(question => {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        // Show loading state
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
         const submitBtn = contactForm.querySelector('.btn-submit');
+        const originalText = submitBtn.textContent;
+        
         submitBtn.textContent = 'SENDING...';
         submitBtn.disabled = true;
         
-        // FormSubmit will handle the actual submission
-        // The form will submit normally to FormSubmit's server
+        const formData = new FormData(contactForm);
+        
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                alert('Success! Your message has been sent.');
+                contactForm.reset();
+            } else {
+                alert('Error: ' + (data.message || 'Something went wrong.'));
+            }
+        } catch (error) {
+            alert('Network error. Please try again.');
+            console.error('Error:', error);
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
+
+
 
 // ===========================
 // Scroll Animation Observer
