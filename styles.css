@@ -362,6 +362,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--section-padding);
 }
 
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -517,6 +518,7 @@ h1, h2, h3, h4, h5, h6 {
 .service-images {
     display: flex;
     flex-direction: column;
+    filter: grayscale(75%);
     gap: 20px;
 }
 
