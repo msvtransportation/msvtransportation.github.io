@@ -124,8 +124,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary {
-    background: var(--black);
-    color: var(--white);
+    background: var(--white);
+    color: var(--black);
 }
 
 .btn-secondary:hover {
@@ -136,13 +136,13 @@ h1, h2, h3, h4, h5, h6 {
 .btn-contact {
     background: transparent;
     color: var(--white);
-    border: 2px solid var(--white);
+    border: 2px solid var(--black);
     padding: 10px 25px;
 }
 
 .btn-contact:hover {
-    background: var(--white);
-    color: var(--black);
+    background: var(--medium-gray);
+    color: var(--white);
 }
 
 /* ===========================
