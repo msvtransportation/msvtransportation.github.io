@@ -927,7 +927,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .social-links a {
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
@@ -939,12 +939,12 @@ h1, h2, h3, h4, h5, h6 {
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid rgba(245, 243, 243, 0.1);
-    color: var(--light-gray);
+    border-top: 1px solid rgba(5, 4, 4, 0.1);
+    color: var(--black);
 }
 
 .footer-bottom a {
-    color: var(--light-gray);
+    color: var(--black);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
