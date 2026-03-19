@@ -1,4 +1,56 @@
 // ===========================
+// Background Video Keep-Alive
+// ===========================
+const bgVideo = document.getElementById('myVideo');
+if (bgVideo) {
+    bgVideo.addEventListener('pause', () => {
+        bgVideo.play().catch(() => {});
+    });
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            bgVideo.play().catch(() => {});
+        }
+    });
+}
+
+// ===========================
+// Dynamic Stats
+// ===========================
+(function updateStats() {
+    const now = new Date();
+
+    // Years of experience: auto-increments every year
+    const yearsExp = now.getFullYear() - 2017;
+
+    // Loads delivered: base count at reference date + 8–12 per day (seeded so all visitors see same number)
+    const referenceDate = new Date('2025-01-01');
+    const baseLoads = 20580;
+    const msPerDay = 1000 * 60 * 60 * 24;
+    const daysSince = Math.floor((now - referenceDate) / msPerDay);
+    const refDayNum = Math.floor(referenceDate.getTime() / msPerDay);
+
+    let loads = baseLoads;
+    for (let i = 0; i < daysSince; i++) {
+        // Seeded pseudo-random: deterministic per day, range 8–12
+        const seed = refDayNum + i;
+        const rand = Math.abs(Math.sin(seed * 9301 + 49297)) % 1;
+        loads += 8 + Math.floor(rand * 5); // 8, 9, 10, 11, or 12
+    }
+
+    // Update the DOM
+    document.querySelectorAll('.stat-item').forEach(item => {
+        const label = item.querySelector('.stat-label');
+        const number = item.querySelector('.stat-number');
+        if (!label || !number) return;
+        if (label.textContent.includes('EXPERIENCE')) {
+            number.textContent = yearsExp + '+';
+        } else if (label.textContent.includes('LOADS')) {
+            number.textContent = loads.toLocaleString() + '+';
+        }
+    });
+})();
+
+// ===========================
 // Mobile Navigation Toggle
 // ===========================
 const navToggle = document.querySelector('.nav-toggle');
