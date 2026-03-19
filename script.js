@@ -4,7 +4,14 @@
 const bgVideo = document.getElementById('myVideo');
 if (bgVideo) {
     bgVideo.muted = true;
-    bgVideo.play().catch(() => {});
+    bgVideo.play().catch(() => {
+        // Autoplay blocked by Safari — play on first user interaction
+        const unlock = () => {
+            bgVideo.play().catch(() => {});
+            ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => document.removeEventListener(e, unlock));
+        };
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => document.addEventListener(e, unlock, { once: true }));
+    });
     bgVideo.addEventListener('pause', () => {
         bgVideo.play().catch(() => {});
     });
