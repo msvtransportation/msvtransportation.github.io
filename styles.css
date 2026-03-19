@@ -103,6 +103,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #E8E2D8;
 }
 
+
 /* ===========================
    Buttons
    =========================== */
@@ -373,6 +374,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section {
     padding: var(--section-padding);
     background: transparent;
+    background-color:var(--light-gray);
 }
 
 
@@ -387,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-content p {
     margin-bottom: 20px;
     line-height: 1.8;
-    color: antiquewhite;
+    color: var(--dark-gray);
 }
 
 .about-subtitle {
@@ -396,7 +398,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-red);
     -webkit-text-stroke: 0.25px whitesmoke;
 }
-
+#about_title{
+    color: var(--black);
+}
 .about-values {
     margin-top: 40px;
     display: flex;
@@ -406,9 +410,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .value-item h4 {
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--black);
     margin-bottom: 10px;
-    -webkit-text-stroke: 0.05px whitesmoke;
+    
 }
 
 .about-image img {
@@ -467,13 +471,17 @@ h1, h2, h3, h4, h5, h6 {
 .team-section {
     margin-top: 60px;
     text-align: center;
-    color: #E8E2D8;
+    color: var(--primary-red);
+}
+
+.team-section .section-subtitle{
+    color: var(--primary-red);
 }
 
 
 .team-intro {
     font-size: 1.1rem;
-    color: var(--white);
+    color: var(--black);
 }
 
 /* ===========================
@@ -486,10 +494,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-block {
     margin-bottom: 80px;
-    /* background: var(--white); */
+    /* background: var(--white);  */
     padding: 50px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+#freight_transportation {
+    background-color: #E8E2D8;
+}
+
+
+#white_bg_color{
+    color: #000000;
 }
 
 .service-title {
@@ -523,7 +540,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 30px;
     position: relative;
     font-weight: 600;
-    color: #E8E2D8;
+    color: var(--light-gray);
 }
 
 .service-features li::before {
