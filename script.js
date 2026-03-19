@@ -3,6 +3,8 @@
 // ===========================
 const bgVideo = document.getElementById('myVideo');
 if (bgVideo) {
+    bgVideo.muted = true;
+    bgVideo.play().catch(() => {});
     bgVideo.addEventListener('pause', () => {
         bgVideo.play().catch(() => {});
     });
